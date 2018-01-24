@@ -1,0 +1,25 @@
+template<typename T>
+void shellSort(T arr[], int n) {
+	int gap=n/2;
+	//要进行的的次数，以增量为变量
+	while (gap) {
+		//对每次增量对应的数组排序
+		for(int i=0;i<gap;i++){
+			int j;
+			for (j =i+gap; j<n; j += gap) {
+				if (arr[j] < arr[j - gap]) {
+					int temp = arr[j];
+					int k = j -gap;
+					while (k >= 0 && arr[k] > temp) {
+						arr[k + gap] = arr[k];
+						k -= gap;
+					}
+					arr[k + gap] = temp;
+				}
+			}
+		}
+		gap /= 2;
+	}
+
+
+}
